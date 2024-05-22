@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+	char produto[2][50];
+	float valor_prod[2];
+	int qnt_prod[2];
+
+	char baixa_produto[50];
+	int qnt_prod_vendidos = 0;
+	
+	int alternativa;
+	int produto_encontrado;
+	
+	//Cadastro dos Produtos
+	for(int c=0;c<2;c++){
+		printf("Produto = ");
+		scanf("%s", &produto[c]);
+		
+		printf("Valor = ");
+		scanf("%f", &valor_prod[c]);
+		
+		printf("Quantidade = ");
+		scanf("%d", &qnt_prod[c]);
+		printf("\n");
+	}
+	
+	//Opção de Venda de Produtor ou Sair do Programa
+	do{
+		printf("\n1 - Venda\n2 - Sair\n");
+		scanf("%d", &alternativa);
+			if(alternativa==1){
+			printf("\nNome do Produto = ");
+			scanf("%s", &baixa_produto);	
+		
+			produto_encontrado=0;// Inicia com produtor nao encontrado
+			
+			for(int c=0;c<2;c++){
+			
+				if(strcmp(baixa_produto, produto[c])==0){
+				
+					printf("Produto Localizado\n");
+					printf("Quantidade em Unidades Vendidas = ");
+					scanf("%d", &qnt_prod_vendidos);
+				
+					//Verifica se a produtos suficientes, depois faz o processo de subtraçao do produto vendido
+					if(qnt_prod[c] >= qnt_prod_vendidos){
+                    	qnt_prod[c] -= qnt_prod_vendidos;
+                    	printf("Quantidade de %s disponiveis = %d\n", produto[c], qnt_prod[c]);
+                	}else{
+                    	printf("Quantidade insuficiente de %s no estoque.\n", produto[c]);
+                	}
+				
+					produto_encontrado=1; 
+					break;
+			}
+		}
+		
+		if(!produto_encontrado){
+				printf("Produto nao encotrado");
+			}
+		}
+	
+	}while(alternativa!=2);
+	
+	if(alternativa==2){
+		printf("Fechando programa . . .")
+	}
+	
+	return 0;
+}
