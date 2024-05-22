@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <strings.h>
+
+int main(){
+	char nome[10][50], aluno_consulta[50];
+	int idade[10], media[10], aluno_existente;
+	
+	
+	for(int c=1;c<=10;c++){
+		printf("Aluno = ");
+		scanf("%s", &nome[c]);
+		
+		printf("Idade = ");
+		scanf("%d", &idade[c]);
+		
+		printf("Media = ");
+		scanf("%d", &media[c]);
+		printf("\n");
+	}
+	
+	printf("Consulte aluno por nome: ");
+	scanf("%s", &aluno_consulta);
+	
+	for(int c=1;c<=10;c++){
+			
+		if(strcmp(aluno_consulta, nome[c])==0){
+			printf("\nAluno = %s", nome[c]);
+			printf("\nIdade = %d", idade[c]);
+			printf("\nMedia = %d", media[c]);
+		
+		aluno_existente = 1;
+		}	
+	}
+	
+	if(aluno_existente!=1){
+		printf("Aluno nao encontrado");
+	}
+}
